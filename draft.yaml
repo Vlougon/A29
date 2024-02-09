@@ -1,0 +1,35 @@
+models:
+
+  Post:
+    name: string
+    relationships:
+      morphMany: Comment
+      morphOne: Image
+      morphToMany: Tag
+
+  Video:
+    name: string
+    relationships:
+      morphMany: Comment
+      morphOne: Image
+      morphToMany: Tag
+
+  Comment:
+    body: string
+    relationships:
+      morphTo: Commentable
+
+  Image:
+    url: string
+    relationships:
+      morphTo: Imageable
+
+  Tag:
+    url: string
+    relationships:
+      morphedByMany: Post, Video
+
+controllers:
+  # ...
+
+seeders: Post, Video

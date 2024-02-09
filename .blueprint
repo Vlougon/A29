@@ -1,0 +1,26 @@
+created:
+    - database/factories/PostFactory.php
+    - database/factories/VideoFactory.php
+    - database/factories/CommentFactory.php
+    - database/factories/ImageFactory.php
+    - database/factories/TagFactory.php
+    - database/migrations/2024_01_19_222221_create_posts_table.php
+    - database/migrations/2024_01_19_222222_create_videos_table.php
+    - database/migrations/2024_01_19_222223_create_comments_table.php
+    - database/migrations/2024_01_19_222224_create_images_table.php
+    - database/migrations/2024_01_19_222225_create_tags_table.php
+    - database/migrations/2024_01_19_222226_create_tagables_table.php
+    - app/Models/Post.php
+    - app/Models/Video.php
+    - app/Models/Comment.php
+    - app/Models/Image.php
+    - app/Models/Tag.php
+    - database/seeders/PostSeeder.php
+    - database/seeders/VideoSeeder.php
+models:
+    User: {  }
+    Post: { name: string, relationships: { morphMany: Comment, morphOne: Image, morphToMany: Tag } }
+    Video: { name: string, relationships: { morphMany: Comment, morphOne: Image, morphToMany: Tag } }
+    Comment: { body: string, relationships: { morphTo: Commentable } }
+    Image: { url: string, relationships: { morphTo: Imageable } }
+    Tag: { url: string, relationships: { morphedByMany: 'Post, Video' } }
